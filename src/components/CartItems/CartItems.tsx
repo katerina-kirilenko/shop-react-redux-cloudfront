@@ -13,7 +13,7 @@ type CartItemsProps = {
 
 export default function CartItems({ items, isEditable }: CartItemsProps) {
   const totalPrice: number = items.reduce(
-    (total, item) => item.count * item.product.price + total,
+    (total, item) => item.product.count * item.product.price + total,
     0
   );
 
@@ -31,8 +31,8 @@ export default function CartItems({ items, isEditable }: CartItemsProps) {
               secondary={cartItem.product.description}
             />
             <Typography variant="body2">
-              {formatAsPrice(cartItem.product.price)} x {cartItem.count} ={" "}
-              {formatAsPrice(cartItem.product.price * cartItem.count)}
+              {formatAsPrice(cartItem.product.price)} x {cartItem.product.count}{" "}
+              = {formatAsPrice(cartItem.product.price * cartItem.product.count)}
             </Typography>
           </ListItem>
         ))}

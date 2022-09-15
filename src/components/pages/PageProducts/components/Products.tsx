@@ -17,6 +17,11 @@ export default function Products() {
     return <Typography>Loading...</Typography>;
   }
 
+  function checkImage(src: string) {
+    if (!src) return "src/mocks/camera.jpg";
+    return `${API_PATHS.images}${src}`;
+  }
+
   return (
     <Grid container spacing={4}>
       {data.map((product) => (
@@ -27,7 +32,7 @@ export default function Products() {
           >
             <CardMedia
               sx={{ pt: "56.25%" }}
-              image={`${API_PATHS.images}${product.image}`}
+              image={checkImage(product.image)}
               title={product.title}
             />
             <CardContent sx={{ flexGrow: 1 }}>

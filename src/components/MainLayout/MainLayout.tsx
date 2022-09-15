@@ -1,6 +1,5 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import Container from "@mui/material/Container";
 import Header from "~/components/MainLayout/components/Header";
 import Box from "@mui/material/Box";
@@ -17,12 +16,19 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ flex: "1 0 auto" }}>
         <Container sx={{ pb: 8 }} maxWidth="md">
           {children}
         </Container>
       </main>
-      <Box component={"footer"} sx={{ bgcolor: "#f5f5f5", padding: 2 }}>
+      <Box
+        component={"footer"}
+        sx={{
+          bgcolor: "#f5f5f5",
+          padding: 2,
+          flex: "0 0 auto",
+        }}
+      >
         <Typography
           variant="subtitle1"
           align="center"

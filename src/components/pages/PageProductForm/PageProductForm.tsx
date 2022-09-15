@@ -1,6 +1,10 @@
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import { AvailableProduct, AvailableProductSchema } from "~/models/Product";
+import {
+  AvailableProduct,
+  AvailableProductSchema,
+  ProductSchema,
+} from "~/models/Product";
 import { Formik, Field, FormikProps, Form } from "formik";
 import TextField from "~/components/Form/TextField";
 import { useNavigate, useParams } from "react-router-dom";
@@ -49,7 +53,7 @@ export default function PageProductForm() {
       ) : (
         <Formik
           initialValues={data ?? initialValues}
-          validationSchema={AvailableProductSchema}
+          validationSchema={ProductSchema}
           onSubmit={onSubmit}
         >
           {({ dirty, isSubmitting }: FormikProps<AvailableProduct>) => (
