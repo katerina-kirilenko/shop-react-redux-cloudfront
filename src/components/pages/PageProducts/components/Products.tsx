@@ -8,6 +8,7 @@ import { formatAsPrice } from "~/utils/utils";
 import AddProductToCart from "~/components/AddProductToCart/AddProductToCart";
 import { useAvailableProducts } from "~/queries/products";
 import API_PATHS from "~/constants/apiPaths";
+import BasicModal from "~/components/Modal/Modal";
 
 export default function Products() {
   const { data = [], isLoading } = useAvailableProducts();
@@ -18,22 +19,25 @@ export default function Products() {
 
   return (
     <Grid container spacing={4}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {data.map(({ count, ...product }, index) => (
-        <Grid item key={product.id} xs={12} sm={6} md={4}>
+      {data.map((product) => (
+        <Grid item key={product.productId} xs={12} sm={6} md={4}>
           <Card
+            key={product.productId}
             sx={{ height: "100%", display: "flex", flexDirection: "column" }}
           >
             <CardMedia
               sx={{ pt: "56.25%" }}
               image={`${API_PATHS.images}${product.image}`}
-              title="Image title"
+              title={product.title}
             />
             <CardContent sx={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h5" component="h5">
                 {product.title}
               </Typography>
-              <Typography>{formatAsPrice(product.price)}</Typography>
+              <Typography pb={"10px"}>
+                {formatAsPrice(product.price)}
+              </Typography>
+              <BasicModal product={product} />
             </CardContent>
             <CardActions>
               <AddProductToCart product={product} />

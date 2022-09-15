@@ -1,11 +1,13 @@
 import * as Yup from "yup";
 
 export const ProductSchema = Yup.object({
-  id: Yup.string(),
+  productId: Yup.string().required().default(""),
   title: Yup.string().required().default(""),
   description: Yup.string().default(""),
+  image: Yup.string().default(""),
   price: Yup.number().positive().required().defined().default(0),
-  image: Yup.string().required().default(""),
+  count: Yup.number().default(0).required(),
+  creationDate: Yup.string().default("").required(),
 });
 
 export const AvailableProductSchema = ProductSchema.shape({

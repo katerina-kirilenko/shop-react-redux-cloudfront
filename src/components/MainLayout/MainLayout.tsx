@@ -22,10 +22,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           {children}
         </Container>
       </main>
-      <Box
-        component={"footer"}
-        sx={{ bgcolor: (theme) => theme.palette.background.paper, padding: 6 }}
-      >
+      <Box component={"footer"} sx={{ bgcolor: "#f5f5f5", padding: 2 }}>
         <Typography
           variant="subtitle1"
           align="center"

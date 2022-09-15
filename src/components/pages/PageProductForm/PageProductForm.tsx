@@ -73,7 +73,15 @@ export default function PageProductForm() {
                     fullWidth
                     autoComplete="off"
                     multiline
-                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    name="image"
+                    label="Image"
+                    fullWidth
+                    autoComplete="off"
                   />
                 </Grid>
                 <Grid item xs={12} sm={4}>
