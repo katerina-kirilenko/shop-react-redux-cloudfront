@@ -1,15 +1,23 @@
 import * as Yup from "yup";
 
 export const ProductSchema = Yup.object({
-  id: Yup.string(),
+  productId: Yup.string().default(""),
   title: Yup.string().required().default(""),
   description: Yup.string().default(""),
+  image: Yup.string().default(""),
   price: Yup.number().positive().required().defined().default(0),
-  image: Yup.string().required().default(""),
+  count: Yup.number().default(0).required(),
+  creationDate: Yup.number().default(0),
 });
 
 export const AvailableProductSchema = ProductSchema.shape({
-  count: Yup.number().integer().min(0).required().defined().default(0),
+  productId: Yup.string().required().default(""),
+  title: Yup.string().required().default(""),
+  description: Yup.string().default(""),
+  image: Yup.string().default(""),
+  price: Yup.number().positive().required().defined().default(0),
+  count: Yup.number().default(0).required(),
+  creationDate: Yup.number().default(0).required(),
 });
 
 export type Product = Yup.InferType<typeof ProductSchema>;

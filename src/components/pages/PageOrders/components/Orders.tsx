@@ -7,6 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   useDeleteOrder,
   useInvalidateOrders,
@@ -45,14 +47,16 @@ export default function Orders() {
                 <Button
                   size="small"
                   color="primary"
+                  startIcon={<EditIcon />}
                   component={Link}
                   to={order.id}
                 >
-                  Manage
+                  Edit
                 </Button>
                 <Button
                   size="small"
                   color="secondary"
+                  startIcon={<DeleteIcon />}
                   onClick={() =>
                     deleteOrder(order.id, { onSuccess: invalidateOrders })
                   }

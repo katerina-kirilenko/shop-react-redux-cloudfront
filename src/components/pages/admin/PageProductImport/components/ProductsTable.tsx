@@ -7,6 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { formatAsPrice } from "~/utils/utils";
 import {
   useAvailableProducts,
@@ -33,7 +35,7 @@ export default function ProductsTable() {
         </TableHead>
         <TableBody>
           {data.map((product) => (
-            <TableRow key={product.id}>
+            <TableRow key={product.productId}>
               <TableCell component="th" scope="row">
                 {product.title}
               </TableCell>
@@ -46,17 +48,19 @@ export default function ProductsTable() {
                 <Button
                   size="small"
                   color="primary"
+                  startIcon={<EditIcon />}
                   component={Link}
-                  to={`/admin/product-form/${product.id}`}
+                  to={`/admin/product-form/${product.productId}`}
                 >
-                  Manage
+                  Edit
                 </Button>
                 <Button
                   size="small"
                   color="secondary"
+                  startIcon={<DeleteIcon />}
                   onClick={() => {
-                    if (product.id) {
-                      deleteAvailableProduct(product.id, {
+                    if (product.productId) {
+                      deleteAvailableProduct(product.productId, {
                         onSuccess: invalidateAvailableProducts,
                       });
                     }
